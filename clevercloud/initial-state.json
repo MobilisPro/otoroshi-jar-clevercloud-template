@@ -1,0 +1,504 @@
+{
+  "label": "Otoroshi export",
+  "dateRaw": 1537546837926,
+  "date": "2018-09-21 04:20:37",
+  "stats": {
+    "calls": 495,
+    "dataIn": 11785,
+    "dataOut": 40899894
+  },
+  "config": {
+    "lines": [
+      "dev",
+      "sandbox",
+      "experiments",
+      "preprod",
+      "prod"
+    ],
+    "streamEntityOnly": true,
+    "autoLinkToDefaultGroup": true,
+    "limitConcurrentRequests": false,
+    "maxConcurrentRequests": 1000,
+    "maxHttp10ResponseSize": 4194304,
+    "useCircuitBreakers": true,
+    "apiReadOnly": false,
+    "u2fLoginOnly": false,
+    "ipFiltering": {
+      "whitelist": [],
+      "blacklist": []
+    },
+    "throttlingQuota": 100000,
+    "perIpThrottlingQuota": 500,
+    "analyticsEventsUrl": null,
+    "analyticsWebhooks": [],
+    "alertsWebhooks": [],
+    "alertsEmails": [],
+    "endlessIpAddresses": [],
+    "statsdConfig": null,
+    "kafkaConfig": null,
+    "backofficeAuth0Config": null,
+    "privateAppsAuth0Config": {
+      "clientId": "4Fix2mZXDaE6g3ddR4BDq31u6ty4M40E",
+      "clientSecret": "x5vGOtjmIF4mMSOv9Tbvba6kK8LYH-8RjvAfQTzhZEGQCeBfNZFp6XV64jMKKvYX",
+      "domain": "voxingpro.eu.auth0.com",
+      "callbackUrl": "http://privateapps.voxingpro.com/privateapps/auth0/callback"
+    },
+    "mailGunSettings": null,
+    "cleverSettings": null,
+    "maxWebhookSize": 100,
+    "middleFingers": false,
+    "maxLogsSize": 10000,
+    "otoroshiId": "c76e0231b-962d-466b-aa45-b0bbac38119e",
+    "snowMonkeyConfig": {
+      "enabled": false,
+      "outageStrategy": "OneServicePerGroup",
+      "includeUserFacingDescriptors": false,
+      "dryRun": false,
+      "timesPerDay": 1,
+      "startTime": "09:00:00.000",
+      "stopTime": "23:59:59.000",
+      "outageDurationFrom": 600000,
+      "outageDurationTo": 3600000,
+      "targetGroups": [],
+      "chaosConfig": {
+        "enabled": true,
+        "largeRequestFaultConfig": {
+          "ratio": 0.2,
+          "additionalRequestSize": 0
+        },
+        "largeResponseFaultConfig": {
+          "ratio": 0.2,
+          "additionalResponseSize": 0
+        },
+        "latencyInjectionFaultConfig": {
+          "ratio": 0.2,
+          "from": 500,
+          "to": 5000
+        },
+        "badResponsesFaultConfig": {
+          "ratio": 0.2,
+          "responses": [
+            {
+              "status": 502,
+              "body": "{\"error\":\"Nihonzaru everywhere ...\"}",
+              "headers": {
+                "Content-Type": "application/json"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "appConfig": {
+    "actorsystems": {
+      "datastore": {
+        "akka": {
+          "default-dispatcher": {
+            "executor": "fork-join-executor",
+            "fork-join-executor": {
+              "parallelism-factor": 4,
+              "parallelism-max": 64,
+              "parallelism-min": 4,
+              "task-peeking-mode": "FIFO"
+            },
+            "throughput": 1,
+            "type": "Dispatcher"
+          },
+          "jvm-exit-on-fatal-error": false,
+          "log-dead-letters-during-shutdown": false
+        }
+      },
+      "otoroshi": {
+        "akka": {
+          "default-dispatcher": {
+            "executor": "fork-join-executor",
+            "fork-join-executor": {
+              "parallelism-factor": 4,
+              "parallelism-max": 64,
+              "parallelism-min": 4,
+              "task-peeking-mode": "FIFO"
+            },
+            "throughput": 1,
+            "type": "Dispatcher"
+          },
+          "jvm-exit-on-fatal-error": false,
+          "log-dead-letters-during-shutdown": false
+        }
+      }
+    },
+    "adminapi": {
+      "defaultValues": {
+        "backOfficeApiKeyClientId": "UDgRLBRGJUFpL4Jk",
+        "backOfficeApiKeyClientSecret": "mkhwrHZJWv5D5y2hsE3N3ZBRuXbj5ETw2P34UmXD5Yk86YfNbcgRZGeAHPrA3S9T",
+        "backOfficeGroupId": "jPfNtDS6rwES3YJFBwJfxextRPQvZRrbX8kMPazGFDuwDQSKAHsjJksKk7E8qmqz",
+        "backOfficeServiceId": "S7eVPyLNuYFMSdW8qKZvVL37ZhfNVufDL4FgvmpRMv3WNwgMyXgL5H64exQBc3Tk"
+      },
+      "exposed": true,
+      "exposedSubdomain": "otoroshi-api",
+      "proxy": {
+        "https": false,
+        "local": true
+      },
+      "targetSubdomain": "otoroshi-admin-internal-api"
+    },
+    "appMeta": "app_metadata",
+    "backoffice": {
+      "exposed": true,
+      "session": {
+        "exp": 86400000
+      },
+      "subdomain": "otoroshi"
+    },
+    "cassandra": {
+      "host": "127.0.0.1",
+      "hosts": "127.0.0.1",
+      "port": 9042,
+      "replicationFactor": 1,
+      "windowSize": 99
+    },
+    "checkForUpdates": true,
+    "claim": {
+      "sharedKey": "ZpYPhLnuZmLrjtxPr9mfR8vgcJPA6ptCkaD3sU7Gx3Fd3vkTgeTkGMw9CabFEZQp"
+    },
+    "commitId": "243fe004afca8475ab7e6d8fb433806bf969e1d5",
+    "domain": "voxingpro.com",
+    "env": "prod",
+    "events": {
+      "maxSize": 1000
+    },
+    "eventsName": "otoroshi",
+    "health": {
+      "limit": 1000
+    },
+    "inmemory": {
+      "experimental": false,
+      "windowSize": 99
+    },
+    "kafka": {
+      "groupId": "otoroshi",
+      "host": "127.0.0.1",
+      "keystore": {},
+      "nbPartitions": 3,
+      "port": "9092",
+      "servers": "127.0.0.1:9092",
+      "truststore": {}
+    },
+    "leveldb": {
+      "path": "./leveldb",
+      "windowSize": 99
+    },
+    "middleFingers": false,
+    "mongo": {
+      "uri": "mongodb://localhost:27017/default",
+      "windowSize": 99
+    },
+    "overheadThreshold": 500,
+    "privateapps": {
+      "session": {
+        "exp": 86400000
+      },
+      "subdomain": "privateapps"
+    },
+    "redirectToDev": false,
+    "redis": {
+      "host": "localhost",
+      "port": 6379,
+      "slaves": [],
+      "useScan": false,
+      "windowSize": 99
+    },
+    "rootScheme": "http",
+    "sidecar": {
+      "apikey": {},
+      "from": "127.0.0.1",
+      "strict": true
+    },
+    "snowflake": {
+      "seed": "0"
+    },
+    "storage": "inmemory",
+    "storageRoot": "otoroshi",
+    "throttlingWindow": 10,
+    "useCache": false,
+    "useUniversalLogin": false,
+    "userMeta": "otoroshi_data",
+    "webhooks": {
+      "size": 100
+    },
+    "workers": 30
+  },
+  "admins": [],
+  "simpleAdmins": [
+    {
+      "username": "admin@otoroshi.io",
+      "password": "$2a$10$5PYOijiuPajceuVLcBKNCemCiQyaDijBamhFDZd8KAIAwkI38bF6K",
+      "label": "Otoroshi Admin",
+      "authorizedGroup": null,
+      "createdAt": 1537374517120
+    }
+  ],
+  "serviceGroups": [
+    {
+      "id": "jPfNtDS6rwES3YJFBwJfxextRPQvZRrbX8kMPazGFDuwDQSKAHsjJksKk7E8qmqz",
+      "name": "Otoroshi Admin Api group",
+      "description": "No description"
+    },
+    {
+      "id": "default",
+      "name": "default-group",
+      "description": "The default service group"
+    }
+  ],
+  "apiKeys": [
+    {
+      "clientId": "UDgRLBRGJUFpL4Jk",
+      "clientSecret": "mkhwrHZJWv5D5y2hsE3N3ZBRuXbj5ETw2P34UmXD5Yk86YfNbcgRZGeAHPrA3S9T",
+      "clientName": "Otoroshi Backoffice ApiKey",
+      "authorizedGroup": "jPfNtDS6rwES3YJFBwJfxextRPQvZRrbX8kMPazGFDuwDQSKAHsjJksKk7E8qmqz",
+      "enabled": true,
+      "throttlingQuota": 10000000,
+      "dailyQuota": 10000000,
+      "monthlyQuota": 10000000,
+      "metadata": {}
+    },
+    {
+      "clientId": "9HFCzZIPUQQvfxkq",
+      "clientSecret": "lmwAGwqtJJM7nOMGKwSAdOjC3CZExfYC7qXd4aPmmseaShkEccAnmpULvgnrt6tp",
+      "clientName": "default-apikey",
+      "authorizedGroup": "default",
+      "enabled": true,
+      "throttlingQuota": 10000000,
+      "dailyQuota": 10000000,
+      "monthlyQuota": 10000000,
+      "metadata": {}
+    }
+  ],
+  "serviceDescriptors": [
+    {
+      "id": "S7eVPyLNuYFMSdW8qKZvVL37ZhfNVufDL4FgvmpRMv3WNwgMyXgL5H64exQBc3Tk",
+      "groupId": "jPfNtDS6rwES3YJFBwJfxextRPQvZRrbX8kMPazGFDuwDQSKAHsjJksKk7E8qmqz",
+      "name": "otoroshi-admin-api",
+      "env": "prod",
+      "domain": "voxingpro.com",
+      "subdomain": "otoroshi-api",
+      "targets": [
+        {
+          "host": "127.0.0.1:8080",
+          "scheme": "http"
+        }
+      ],
+      "root": "/",
+      "matchingRoot": null,
+      "localHost": "127.0.0.1:8080",
+      "localScheme": "http",
+      "redirectToLocal": false,
+      "enabled": true,
+      "userFacing": false,
+      "privateApp": false,
+      "forceHttps": false,
+      "maintenanceMode": false,
+      "buildMode": false,
+      "strictlyPrivate": false,
+      "enforceSecureCommunication": true,
+      "sendOtoroshiHeadersBack": true,
+      "secComExcludedPatterns": [],
+      "publicPatterns": [
+        "/health"
+      ],
+      "privatePatterns": [],
+      "additionalHeaders": {
+        "Host": "otoroshi-admin-internal-api.voxingpro.com"
+      },
+      "matchingHeaders": {},
+      "ipFiltering": {
+        "whitelist": [],
+        "blacklist": []
+      },
+      "api": {
+        "exposeApi": false
+      },
+      "healthCheck": {
+        "enabled": false,
+        "url": "/"
+      },
+      "clientConfig": {
+        "useCircuitBreaker": true,
+        "retries": 1,
+        "maxErrors": 20,
+        "retryInitialDelay": 50,
+        "backoffFactor": 2,
+        "callTimeout": 30000,
+        "globalTimeout": 30000,
+        "sampleInterval": 2000
+      },
+      "canary": {
+        "enabled": false,
+        "traffic": 0.2,
+        "targets": [],
+        "root": "/"
+      },
+      "metadata": {},
+      "chaosConfig": {
+        "enabled": false,
+        "largeRequestFaultConfig": {
+          "ratio": 0.2,
+          "additionalRequestSize": 0
+        },
+        "largeResponseFaultConfig": {
+          "ratio": 0.2,
+          "additionalResponseSize": 0
+        },
+        "latencyInjectionFaultConfig": {
+          "ratio": 0.2,
+          "from": 0,
+          "to": 0
+        },
+        "badResponsesFaultConfig": {
+          "ratio": 0.2,
+          "responses": []
+        }
+      },
+      "jwtVerifier": {
+        "type": "local",
+        "enabled": false,
+        "strict": true,
+        "source": {
+          "type": "InHeader",
+          "name": "X-JWT-Token",
+          "remove": ""
+        },
+        "algoSettings": {
+          "type": "HSAlgoSettings",
+          "size": 512,
+          "secret": "secret"
+        },
+        "strategy": {
+          "type": "PassThrough",
+          "verificationSettings": {
+            "fields": {
+              "iss": "The Issuer"
+            }
+          }
+        }
+      },
+      "secComSettings": {
+        "type": "HSAlgoSettings",
+        "size": 512,
+        "secret": "${config.app.claim.sharedKey}"
+      }
+    },
+    {
+      "id": "xvNDAnfSwMviZAdQfCK5oh5aIJ59QfzdsontHpFVgN2mL8j87UUShFpXDr8rq8Yl",
+      "groupId": "default",
+      "name": "preprod-vp-admin",
+      "env": "prod",
+      "domain": "cleverapps.io",
+      "subdomain": "preprod-vp-admin",
+      "targets": [
+        {
+          "host": "app-b26acb3b-72a4-48f3-aa4c-1233e454fde6.cleverapps.io",
+          "scheme": "https"
+        }
+      ],
+      "root": "/",
+      "matchingRoot": null,
+      "localHost": "localhost:8080",
+      "localScheme": "http",
+      "redirectToLocal": false,
+      "enabled": true,
+      "userFacing": false,
+      "privateApp": true,
+      "forceHttps": true,
+      "maintenanceMode": false,
+      "buildMode": false,
+      "strictlyPrivate": true,
+      "enforceSecureCommunication": false,
+      "sendOtoroshiHeadersBack": false,
+      "secComExcludedPatterns": [],
+      "publicPatterns": [
+        "/.*"
+      ],
+      "privatePatterns": [],
+      "additionalHeaders": {},
+      "matchingHeaders": {},
+      "ipFiltering": {
+        "whitelist": [],
+        "blacklist": []
+      },
+      "api": {
+        "exposeApi": false
+      },
+      "healthCheck": {
+        "enabled": false,
+        "url": "/"
+      },
+      "clientConfig": {
+        "useCircuitBreaker": true,
+        "retries": 1,
+        "maxErrors": 20,
+        "retryInitialDelay": 50,
+        "backoffFactor": 2,
+        "callTimeout": 30000,
+        "globalTimeout": 30000,
+        "sampleInterval": 2000
+      },
+      "canary": {
+        "enabled": false,
+        "traffic": 0.2,
+        "targets": [],
+        "root": "/"
+      },
+      "metadata": {},
+      "chaosConfig": {
+        "enabled": false,
+        "largeRequestFaultConfig": {
+          "ratio": 0.2,
+          "additionalRequestSize": 0
+        },
+        "largeResponseFaultConfig": {
+          "ratio": 0.2,
+          "additionalResponseSize": 0
+        },
+        "latencyInjectionFaultConfig": {
+          "ratio": 0.2,
+          "from": 0,
+          "to": 0
+        },
+        "badResponsesFaultConfig": {
+          "ratio": 0.2,
+          "responses": []
+        }
+      },
+      "jwtVerifier": {
+        "type": "local",
+        "enabled": false,
+        "strict": true,
+        "source": {
+          "type": "InHeader",
+          "name": "X-JWT-Token",
+          "remove": ""
+        },
+        "algoSettings": {
+          "type": "HSAlgoSettings",
+          "size": 512,
+          "secret": "secret"
+        },
+        "strategy": {
+          "type": "PassThrough",
+          "verificationSettings": {
+            "fields": {
+              "iss": "The Issuer"
+            }
+          }
+        }
+      },
+      "secComSettings": {
+        "type": "HSAlgoSettings",
+        "size": 512,
+        "secret": "${config.app.claim.sharedKey}"
+      }
+    }
+  ],
+  "errorTemplates": []
+}
